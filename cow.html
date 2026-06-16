@@ -7,6 +7,7 @@
   <style>
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -20,29 +21,48 @@
       max-width: 250px;
       border-radius: 20px;
     }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      background-color: #0078D4;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
 
-  <div>
-    <img src="cow.jpg" alt="Cow">
-    <h1>Playing sound...</h1>
-  </div>
+  cow.jpg
+  <h1>Playing sound...</h1>
 
-  <audio id="sound" autoplay>
-    <source src="cow.mp3" type="audio/mpeg">
+  <button onclick="restartSound()">🔁 Play Again</button>
+
+  <audio id="sound">
+    cow.mp3
   </audio>
 
   <script>
+    // Autoplay attempt
     window.addEventListener("load", () => {
       const audio = document.getElementById("sound");
 
-      // Try to force autoplay
       audio.play().catch(() => {
-        console.log("Autoplay blocked");
+        document.body.addEventListener("click", () => {
+          audio.play();
+        }, { once: true });
       });
     });
+
+    function restartSound() {
+      const audio = document.getElementById("sound");
+      audio.currentTime = 0;
+      audio.play();
+    }
   </script>
 
 </body>
