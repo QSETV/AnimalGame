@@ -36,14 +36,16 @@
 </head>
 
 <body>
+  
+<div>
+    <img src="cow.jpg">
 
-  cow.jpg
   <h1>Playing sound...</h1>
 
   <button onclick="restartSound()">🔁 Play Again</button>
 
-  <audio id="sound">
-    cow.mp3
+  <audio id="sound" autoplay>
+    <source src="cow.mp3" type="audio/mpeg">
   </audio>
 
   <script>
